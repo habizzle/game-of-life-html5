@@ -1,0 +1,15 @@
+{
+  "name": "game-of-life-html5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/GameOfLife.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.26.7"
+  }
+}

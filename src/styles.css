@@ -1,0 +1,56 @@
+@import "normalize.css";
+
+:root {
+    --matchfield-width: 80;
+    --matchfield-height: 40;
+    --matchfield-spacing: 4px;
+}
+
+game-of-life {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+game-of-life .top-bar {
+    background-color: black;
+    color: antiquewhite;
+    font-family: monospace;
+    padding: var(--matchfield-spacing);
+}
+
+game-of-life .bottom-bar {
+    background-color: black;
+    color: antiquewhite;
+    font-family: monospace;
+    padding: var(--matchfield-spacing);
+}
+
+game-of-life .matchfield {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    background: darkslategrey;
+    box-sizing: border-box;
+}
+
+game-of-life .cell {
+    width: calc(100% / var(--matchfield-width));
+    height: calc(100% / var(--matchfield-height));
+    border: calc(var(--matchfield-spacing) / 2) solid black;
+    box-sizing: border-box;
+}
+
+game-of-life .cell:hover {
+    border-color: antiquewhite;
+    cursor: crosshair;
+}
+
+game-of-life .cell[data-cell-alive="true"] {
+    border-color: red;
+    background-image: url("heart.svg");
+    background-position: center center;
+    background-size: 75% 75%;
+    background-repeat: no-repeat;
+}
