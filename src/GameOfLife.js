@@ -10,6 +10,8 @@ const INITIAL_SIZE = {
 
 export default class GameOfLife extends HTMLElement {
 
+    shadowRoot;
+
     constructor() {
         super();
 
@@ -17,6 +19,8 @@ export default class GameOfLife extends HTMLElement {
         this.state.size = INITIAL_SIZE;
         this.state.round = 0;
         this.state.cells = this.cells([]);
+
+        this.shadowRoot = this.attachShadow({mode: "open"});
 
         document.addEventListener("keyup", e => {
             if (e.key === "Enter") {
@@ -79,17 +83,20 @@ export default class GameOfLife extends HTMLElement {
 
     renderState() {
         const template = html`
-        <div class="top-bar">
-          Conway's Game of Life - Round ${this.state.round}
-        </div>
-        <div class="matchfield">
-          ${this.state.cells.map(cell => this.renderCell(cell))}
-        </div>
-        <div class="bottom-bar">
-          <em>MOUSE</em>: Move cell selector   <em>CLICK</em>: Switch cell state (kill / resurrect)   <em>ENTER</em>: Breed next generation
-        </div>
+        <style type="text/css">@import "styles.css";</style>
+        <section>
+            <div class="top-bar">
+              <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</a> - Round ${this.state.round}
+            </div>
+            <div class="matchfield">
+              ${this.state.cells.map(cell => this.renderCell(cell))}
+            </div>
+            <div class="bottom-bar">
+              <em>MOUSE</em>: Move cell selector <em>CLICK</em>: Switch cell state (kill / resurrect) <em>ENTER</em>: <a href="#" @click="${_ => this.nextRound()}">Breed next generation</a>
+            </div>
+        </section>
         `;
-        render(template, this);
+        render(template, this.shadowRoot);
     }
 
     renderCell(cell) {
