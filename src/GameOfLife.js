@@ -86,13 +86,15 @@ export default class GameOfLife extends HTMLElement {
         <style type="text/css">@import "styles.css";</style>
         <section>
             <div class="top-bar">
-              <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</a> - Round ${this.state.round}
+              <a target="_blank" href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</a> - Round ${this.state.round}
             </div>
             <div class="matchfield">
               ${this.state.cells.map(cell => this.renderCell(cell))}
             </div>
             <div class="bottom-bar">
-              <em>MOUSE</em>: Move cell selector <em>CLICK</em>: Switch cell state (kill / resurrect) <em>ENTER</em>: <a href="#" @click="${_ => this.nextRound()}">Breed next generation</a>
+              <em>MOUSE</em>: Move cell selector
+              <em>CLICK</em>: Switch cell state (kill / resurrect)
+              <em>ENTER</em>: <a href="#" @click="${_ => this.nextRound()}">Breed next generation</a>
             </div>
         </section>
         `;
