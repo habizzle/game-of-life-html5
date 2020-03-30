@@ -1,7 +1,7 @@
 import {html, render} from "https://unpkg.com/lit-html@1.2.1/lit-html.js"
 import Cell from "./Cell.js";
 
-const SERVER_URL = "http://localhost:4567";
+const DEFAULT_SERVER_URL = "http://localhost:8000";
 
 const INITIAL_SIZE = {
     width: 80,
@@ -30,6 +30,11 @@ export default class GameOfLife extends HTMLElement {
         });
     }
 
+    getServerUrl() {
+        const serverUrl = this.getAttribute("data-server-url");
+        return serverUrl === null ? DEFAULT_SERVER_URL : serverUrl;
+    }
+
     cells(aliveCells) {
         function isAliveAt(aliveCells, x, y) {
             return aliveCells.some(position => position.x === x && position.y === y)
@@ -46,7 +51,7 @@ export default class GameOfLife extends HTMLElement {
     }
 
     async nextRound() {
-        const response = await fetch(`${SERVER_URL}/nextRound`, {
+        const response = await fetch(`${this.getServerUrl()}/nextRound`, {
             method: "PUT",
             headers: {
                 "Access-Control-Request-Headers": "Content-Type",
