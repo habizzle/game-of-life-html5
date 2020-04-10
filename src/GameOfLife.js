@@ -1,7 +1,6 @@
 import {html, render} from "https://unpkg.com/lit-html@1.2.1/lit-html.js"
 import Cell from "./Cell.js";
-
-const DEFAULT_SERVER_URL = "http://localhost:8000";
+import defaults from "./defaults.json"
 
 const INITIAL_SIZE = {
     width: 80,
@@ -32,7 +31,7 @@ export default class GameOfLife extends HTMLElement {
 
     getServerUrl() {
         const serverUrl = this.getAttribute("data-server-url");
-        return serverUrl === null ? DEFAULT_SERVER_URL : serverUrl;
+        return serverUrl === null ? defaults.serverUrl : serverUrl;
     }
 
     cells(aliveCells) {
