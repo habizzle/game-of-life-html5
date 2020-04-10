@@ -12,12 +12,8 @@ Run locally for development with the awesome [browsersync](https://www.browsersy
 $ npx browser-sync start --config bs-config.js
 ```
 
----
-**NOTE**
-
+**NOTE**: 
 npx is bundled with current npm installations.
-
----
 
 After browsersync is started, you can access the application via http://localhost:3000.
 
@@ -36,9 +32,7 @@ Use `data-server-url` attribute to configure the REST server url:
 
 The default server url is `http://localhost:4567` (as it is the default of the REST server app).
 
----
-**NOTE**
-
+**NOTE**:
 It is recommended to explicitly set a size for the component.
 If you want to have the component span the complete browser window, use
 
@@ -46,4 +40,24 @@ If you want to have the component span the complete browser window, use
 width: 100vw; height: 100vh;
 ```
 
+Deploy
 ---
+
+**Locally**:
+
+1. Build Docker image with `docker build -t gameoflife-html5 .`
+2. Run it with `docker run -p 8080:8080 gameoflife-html5`
+3. Browse http://localhost:8080 to use full screen application or embed in your  web page:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://localhost:8080/GameOfLife.js" type="module"></script>
+</head>
+<body>
+<!-- 100vw / 100vh makes it use complete viewport size -->
+<game-of-life style="width: 100vw; height: 100vh;"/>
+</body>
+</html>
+```
