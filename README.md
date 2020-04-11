@@ -49,13 +49,13 @@ Deploy
 (`$GAMEOFLIFE_SERVICE_URL` is the desired default REST server url)
 2. Run it with `docker run -p 1234:8080 gameoflife-html5`
 (of course, you can forward port 8080 to whatever port you like, not just 1234)
-3. Browse http://localhost:1234 to use full screen application or embed in your  web page:
+3. Browse http://localhost:1234 to use full screen application or embed in your web page:
 
 ```html
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="http://localhost:8080/GameOfLife.js" type="module"></script>
+    <script src="http://localhost:1234/GameOfLife.js" type="module"></script>
 </head>
 <body>
 <!-- 100vw / 100vh makes it use complete viewport size -->
