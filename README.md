@@ -45,9 +45,11 @@ Deploy
 
 **Locally**:
 
-1. Build Docker image with `docker build -t gameoflife-html5 .`
-2. Run it with `docker run -p 8080:8080 gameoflife-html5`
-3. Browse http://localhost:8080 to use full screen application or embed in your  web page:
+1. Build Docker image with `docker build --build-arg GAMEOFLIFE_SERVICE_URL=$GAMEOFLIFE_SERVICE_URL --tag istkorrekt/gameoflife-html5 .`
+(`$GAMEOFLIFE_SERVICE_URL` is the desired default REST server url)
+2. Run it with `docker run -p 1234:8080 gameoflife-html5`
+(of course, you can forward port 8080 to whatever port you like, not just 1234)
+3. Browse http://localhost:1234 to use full screen application or embed in your  web page:
 
 ```html
 <!DOCTYPE html>
