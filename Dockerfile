@@ -6,4 +6,4 @@ COPY src /usr/share/nginx/html
 ARG GAMEOFLIFE_SERVICE_URL
 
 # Replace default service url with one from the environment
-RUN sed -i 's@"http:\/\/service-url";@"'"$GAMEOFLIFE_SERVICE_URL"'"@g' /usr/share/nginx/html/defaults.js
+RUN sed -i 's@"http:\/\/localhost:3000"@"'"$GAMEOFLIFE_SERVICE_URL"'"@g' /usr/share/nginx/html/defaults.service-url.js
