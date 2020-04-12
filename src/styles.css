@@ -4,7 +4,7 @@
     display: block;
     --matchfield-width: 80;
     --matchfield-height: 40;
-    --matchfield-spacing: 4px;
+    --matchfield-spacing: calc((var(--matchfield-height) / 10) * 2px);
 }
 
 a {
@@ -20,6 +20,7 @@ section {
     height: 100%;
     display: flex;
     flex-direction: column;
+    font-size: 2em;
 }
 
 .top-bar {
@@ -34,6 +35,14 @@ section {
     color: antiquewhite;
     font-family: monospace;
     padding: var(--matchfield-spacing);
+}
+
+.bottom-bar > span {
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
 }
 
 .matchfield {

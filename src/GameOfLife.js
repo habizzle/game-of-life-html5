@@ -2,9 +2,11 @@ import {html, render} from "https://unpkg.com/lit-html@1.2.1/lit-html.js"
 import Cell from "./Cell.js";
 import {DEFAULT_SERVICE_URL} from "./defaults.service-url.js"
 
+const CELLS_IN_ROW = Math.floor(document.documentElement.clientWidth / 50);
+const CELLS_IN_COLUMN = Math.floor((document.documentElement.clientHeight / document.documentElement.clientWidth) * CELLS_IN_ROW)
 const INITIAL_SIZE = {
-    width: 80,
-    height: 40
+    width: CELLS_IN_ROW,
+    height: CELLS_IN_COLUMN
 };
 
 export default class GameOfLife extends HTMLElement {
@@ -15,7 +17,8 @@ export default class GameOfLife extends HTMLElement {
         super();
 
         this.state = {};
-        this.state.size = INITIAL_SIZE;
+        this.configureSize(INITIAL_SIZE);
+
         this.state.round = 0;
         this.state.cells = this.cells([]);
 
@@ -27,6 +30,12 @@ export default class GameOfLife extends HTMLElement {
                 this.nextRound();
             }
         });
+    }
+
+    configureSize(size) {
+        this.state.size = size;
+        this.style.setProperty("--matchfield-width", this.state.size.width);
+        this.style.setProperty("--matchfield-height", this.state.size.height);
     }
 
     getServerUrl() {
@@ -96,9 +105,9 @@ export default class GameOfLife extends HTMLElement {
               ${this.state.cells.map(cell => this.renderCell(cell))}
             </div>
             <div class="bottom-bar">
-              <em>MOUSE</em>: Move cell selector
-              <em>CLICK</em>: Switch cell state (kill / resurrect)
-              <em>ENTER</em>: <a href="#" @click="${_ => this.nextRound()}">Breed next generation</a>
+              <span><em>MOUSE</em>: Move cell selector</span>
+              <span><em>CLICK</em>: Switch cell state (kill / resurrect)</span>
+              <span><em>ENTER</em>: <a href="#" @click="${_ => this.nextRound()}">Breed next generation</a></span>
             </div>
         </section>
         `;
