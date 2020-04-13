@@ -83,7 +83,6 @@ section {
     position: fixed;
     bottom: 1em;
     right: 1em;
-    text-decoration: none;
 }
 
 .next:hover {
