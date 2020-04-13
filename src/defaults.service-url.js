@@ -1,1 +1,1 @@
-export const DEFAULT_SERVICE_URL = "http://localhost:3000";
+export const DEFAULT_SERVICE_URL = "http://localhost:4567";
