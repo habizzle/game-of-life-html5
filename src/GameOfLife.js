@@ -105,10 +105,15 @@ export default class GameOfLife extends HTMLElement {
             <div class="matchfield">
               ${this.state.cells.map(cell => this.renderCell(cell))}
             </div>
-            <div class="next" href="#" @click="${_ => this.nextRound()}" title="Breed next generation"></div>
+            <a class="next" href="#" @click="${e => this.onNextClick(e)}" title="Breed next generation"></a>
         </section>
         `;
         render(template, this.shadowRoot);
+    }
+
+    onNextClick(event) {
+        event.preventDefault();
+        this.nextRound();
     }
 
     renderCell(cell) {
