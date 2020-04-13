@@ -28,21 +28,9 @@ section {
     color: antiquewhite;
     font-family: monospace;
     padding: var(--matchfield-spacing);
-}
-
-.bottom-bar {
-    background-color: black;
-    color: antiquewhite;
-    font-family: monospace;
-    padding: var(--matchfield-spacing);
-}
-
-.bottom-bar > span {
-    white-space: nowrap;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .matchfield {
@@ -71,4 +59,38 @@ section {
     background-position: center center;
     background-size: 75% 75%;
     background-repeat: no-repeat;
+}
+
+.github {
+    background-image: url("github-mark.png");
+    background-position: center center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 1em;
+    height: 1em;
+    display: block;
+}
+
+.next {
+    background-color: black;
+    color: white;
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+    border-radius: 1em;
+    text-align: center;
+    font-size: 1.5em;
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+}
+
+.next:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.next:before {
+    content: "+";
 }
