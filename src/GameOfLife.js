@@ -1,6 +1,7 @@
 import {html, render} from "https://unpkg.com/lit-html@1.2.1/lit-html.js"
 import Cell from "./Cell.js";
 import {DEFAULT_SERVICE_URL} from "./defaults.service-url.js"
+import {DEFAULT_CLIENT_URL} from "./defaults.client-url.js"
 
 const CELLS_IN_ROW = Math.floor(document.documentElement.clientWidth / 50);
 const CELLS_IN_COLUMN = Math.floor((document.documentElement.clientHeight / document.documentElement.clientWidth) * CELLS_IN_ROW)
@@ -96,7 +97,7 @@ export default class GameOfLife extends HTMLElement {
 
     renderState() {
         const template = html`
-        <style type="text/css">@import "styles.css";</style>
+        <style type="text/css">@import "${DEFAULT_CLIENT_URL}/styles.css";</style>
         <section>
             <div class="top-bar">
               <div><a target="_blank" href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</a> - Round ${this.state.round}</div>
