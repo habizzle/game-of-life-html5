@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Build Docker image
-        run: docker build . --tag eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }} --build-arg GAMEOFLIFE_SERVICE_URL=${{ secrets.GAMEOFLIFE_SERVICE_URL }}
+        run: docker build . --tag eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }} --build-arg GAMEOFLIFE_SERVICE_URL=${{ secrets.GAMEOFLIFE_SERVICE_URL }} --build-arg GAMEOFLIFE_CLIENT_URL=${{ secrets.GAMEOFLIFE_CLIENT_URL }}
 
       - name: Authenticate into Google Cloud Platform
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
